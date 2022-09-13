@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonEight = new System.Windows.Forms.Button();
             this.buttonFour = new System.Windows.Forms.Button();
             this.buttonFive = new System.Windows.Forms.Button();
@@ -53,7 +54,9 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChangeSign = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonEight
@@ -293,12 +296,24 @@
             this.buttonChangeSign.UseVisualStyleBackColor = true;
             this.buttonChangeSign.Click += new System.EventHandler(this.buttonChangeSign_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
+            this.pictureBox1.Image = global::Calculators.Properties.Resources.Background;
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, -3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(392, 348);
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(399, 325);
+            this.ClientSize = new System.Drawing.Size(393, 343);
             this.Controls.Add(this.buttonChangeSign);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.label1);
@@ -322,10 +337,14 @@
             this.Controls.Add(this.buttonFive);
             this.Controls.Add(this.buttonFour);
             this.Controls.Add(this.buttonEight);
+            this.Controls.Add(this.pictureBox1);
+            this.MaximumSize = new System.Drawing.Size(409, 382);
+            this.MinimumSize = new System.Drawing.Size(409, 382);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Super Cool Calculator";
             this.Load += new System.EventHandler(this.Form1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,5 +375,6 @@
         private Button buttonDelete;
         private ErrorProvider errorProvider1;
         private Button buttonChangeSign;
+        private PictureBox pictureBox1;
     }
 }
