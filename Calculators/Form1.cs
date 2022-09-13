@@ -3,11 +3,12 @@ namespace Calculators
     public partial class Form1 : Form
     {
 
-
+        List<string> list_Calculator = new List<string>();
         string calculator_Input_One = "";
         string calculator_Input_Two = "";
         bool isAtFirstInput = true;
-        string action;
+        
+        string action = "";
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +21,11 @@ namespace Calculators
 
         private void buttonSquareRooted_Click(object sender, EventArgs e)
         {
-            squareroot();
+            if(calculator_Input_One != "")
+            {
+                squareroot();
+            }
+            
         }
 
         private void buttonNain_Click(object sender, EventArgs e)
@@ -65,9 +70,13 @@ namespace Calculators
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            action = "+";
-            isAtFirstInput = false;
-            label1_Update();
+            if (calculator_Input_One != "" && action == "")
+            {
+                action = "+";
+                isAtFirstInput = false;
+                label1_Update();
+            }
+
 
         }
 
@@ -112,9 +121,12 @@ namespace Calculators
 
         private void buttonMainus_Click(object sender, EventArgs e)
         {
-            isAtFirstInput = false;
-            action = "-";
-            label1_Update();
+            if (calculator_Input_One != "" && action == "")
+            {
+                isAtFirstInput = false;
+                action = "-";
+                label1_Update();
+            }
         }
 
         private void buttonOne_Click(object sender, EventArgs e)
@@ -158,9 +170,12 @@ namespace Calculators
 
         private void buttonMultiply_Click(object sender, EventArgs e)
         {
-            isAtFirstInput = false;
-            action = "*";
-            label1_Update();
+            if (calculator_Input_One != "" && action == "")
+            {
+                isAtFirstInput = false;
+                action = "*";
+                label1_Update();
+            }
         }
 
         private void buttonZero_Click(object sender, EventArgs e)
@@ -217,9 +232,12 @@ namespace Calculators
 
         private void buttonDivision_Click(object sender, EventArgs e)
         {
-            isAtFirstInput=false;
-            action = "/";
-            label1_Update();
+            if (calculator_Input_One != "" && action == "")
+            {
+                isAtFirstInput = false;
+                action = "/";
+                label1_Update();
+            }
         }
 
         private void buttonSquare_Click(object sender, EventArgs e)
@@ -231,6 +249,7 @@ namespace Calculators
         {
             calculator_Input_One = "";
             calculator_Input_Two = "";
+            action = "";
             label1_Update();
         }
 
@@ -301,8 +320,9 @@ namespace Calculators
 
         private void label1_result(double result)
         {
-            calculator_Input_One = "";
+            calculator_Input_One = result.ToString();
             calculator_Input_Two = "";
+            action = "";
             isAtFirstInput = true;
             label1.Text = result.ToString();
         }
@@ -313,15 +333,47 @@ namespace Calculators
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if(isAtFirstInput == true)
+            if (isAtFirstInput == true)
             {
-                calculator_Input_One.TrimEnd();
+                calculator_Input_One = calculator_Input_One.Remove(calculator_Input_One.Length - 1);
             }
             else
             {
-                calculator_Input_Two.TrimEnd();
+                calculator_Input_Two = calculator_Input_Two.Remove(calculator_Input_Two.Length - 1);
+            }
+            label1_Update();
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonChangeSign_Click(object sender, EventArgs e)
+        {
+            if (isAtFirstInput == true)
+            {
+                if (calculator_Input_One.StartsWith("-"))
+                {
+                    calculator_Input_One = calculator_Input_One.Remove(0,1);
+                }
+                else
+                {
+                    calculator_Input_One = "-" + calculator_Input_One;
+                }
+            }
+            else
+            {
+                if (calculator_Input_Two.StartsWith("-"))
+                {
+                    calculator_Input_Two = calculator_Input_Two.Remove(0,1);
+                }
+                else
+                {
+                    calculator_Input_Two = "-" + calculator_Input_Two;
+                }
             }
             label1_Update();
         }
