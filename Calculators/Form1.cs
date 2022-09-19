@@ -287,7 +287,7 @@ namespace Calculators
                 isAtFirstInput = false;
                 label1_Update();
             }
-            else
+            else if (calculator_Input_Two != "")
             {
                 equals();
             }
@@ -301,7 +301,7 @@ namespace Calculators
                 action = "-";
                 label1_Update();
             }
-            else
+            else if (calculator_Input_Two != "")
             {
                 equals();
             }
@@ -315,7 +315,7 @@ namespace Calculators
                 action = "*";
                 label1_Update();
             }
-            else
+            else if (calculator_Input_Two != "")
             {
                 equals();
             }
@@ -329,7 +329,7 @@ namespace Calculators
                 action = "/";
                 label1_Update();
             }
-            else
+            else if (calculator_Input_Two != "")
             {
                 equals();
             }
