@@ -13,110 +13,113 @@ namespace Calculators
         {
             InitializeComponent();
         }
-
+        // Form Stuff - Button Presses
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonSquareRooted_Click(object sender, EventArgs e)
+
+        //NUMBER BUTTONS
+        private void buttonZero_Click(object sender, EventArgs e) //button 0
         {
-            if(calculator_Input_One != "")
-            {
-                squareroot();
-            }
-            
+            addZero();
         }
 
-        private void buttonNain_Click(object sender, EventArgs e)
+        private void buttonOne_Click(object sender, EventArgs e) //button 1
         {
-            addNine();
+            addOne();
         }
 
-        private void buttonEight_Click(object sender, EventArgs e)
+        private void buttonTwo_Click(object sender, EventArgs e) //button 2
+        {
+            addTwo();
+        }
+
+        private void buttonTree_Click(object sender, EventArgs e) // button 3
+        {
+            addThree();
+        }
+        private void buttonFour_Click(object sender, EventArgs e) //button 4
+        {
+            addFour();
+        }
+
+        private void buttonFive_Click(object sender, EventArgs e) //button 5
+        {
+            addFive();
+        }
+
+        private void buttonSix_Click(object sender, EventArgs e) //button 6
+        {
+            addSix();
+        }
+
+        private void buttonSieven_Click(object sender, EventArgs e) //button 7
+        {
+            addSeven();
+        }
+
+        private void buttonEight_Click(object sender, EventArgs e) //button8
         {
             addEight();
 
         }
 
-        private void buttonSieven_Click(object sender, EventArgs e)
+        private void buttonNain_Click(object sender, EventArgs e) //button9
         {
-            addSeven();
+            addNine();
         }
 
-        private void buttonPlus_Click(object sender, EventArgs e)
+        //OPERATOR BUTTONS
+
+        private void buttonPlus_Click(object sender, EventArgs e) //button +
         {
             plus();
 
         }
 
-        private void buttonFour_Click(object sender, EventArgs e)
-        {
-            addFour();
-        }
-
-        private void buttonFive_Click(object sender, EventArgs e)
-        {
-            addFive();
-        }
-
-        private void buttonSix_Click(object sender, EventArgs e)
-        {
-            addSix();
-        }
-
-        private void buttonMainus_Click(object sender, EventArgs e)
+        private void buttonMainus_Click(object sender, EventArgs e) //button -
         {
             minus();
         }
 
-        private void buttonOne_Click(object sender, EventArgs e)
+        private void buttonSquareRooted_Click(object sender, EventArgs e) //square root button
         {
-            addOne();
+            if (calculator_Input_One != "")
+            {
+                squareroot();
+            }
+
         }
 
-
-        private void buttonTwo_Click(object sender, EventArgs e)
-        {
-            addTwo();
-        }
-
-        private void buttonTree_Click(object sender, EventArgs e)
-        {
-            addThree();
-        }
-
-        private void buttonMultiply_Click(object sender, EventArgs e)
+        private void buttonMultiply_Click(object sender, EventArgs e) //button *
         {
             multy();
         }
 
-        private void buttonZero_Click(object sender, EventArgs e)
-        {
-            addZero();
-        }
-
-        private void buttonDecimal_Click(object sender, EventArgs e)
+       
+        private void buttonDecimal_Click(object sender, EventArgs e) //button .
         {
             addDecimal();
         }
 
-        private void buttonEquals_Click(object sender, EventArgs e)
+        private void buttonEquals_Click(object sender, EventArgs e) //button =
         {
             equals();
         }
 
-        private void buttonDivision_Click(object sender, EventArgs e)
+        private void buttonDivision_Click(object sender, EventArgs e) //button /
         {
             divi();
         }
 
-        private void buttonSquare_Click(object sender, EventArgs e)
+        private void buttonSquare_Click(object sender, EventArgs e) // button ^2
         {
             root();
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e) //button C
         {
             calculator_Input_One = "";
             calculator_Input_Two = "";
@@ -124,7 +127,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void buttonCA_Click(object sender, EventArgs e)
+        private void buttonCA_Click(object sender, EventArgs e) //button CA
         {
 
             if (isAtFirstInput == true)
@@ -139,68 +142,107 @@ namespace Calculators
             label1_Update();
         }
 
-        private void equals()
+        private void buttonDelete_Click(object sender, EventArgs e) // delete button
+        {
+            delet();
+        }
+
+
+
+        private void buttonChangeSign_Click(object sender, EventArgs e) // change sign
+        {
+            if (isAtFirstInput == true)
+            {
+                if (calculator_Input_One.StartsWith("-"))
+                {
+                    calculator_Input_One = calculator_Input_One.Remove(0, 1);
+                }
+                else
+                {
+                    calculator_Input_One = "-" + calculator_Input_One;
+                }
+            }
+            else
+            {
+                if (calculator_Input_Two.StartsWith("-"))
+                {
+                    calculator_Input_Two = calculator_Input_Two.Remove(0, 1);
+                }
+                else
+                {
+                    calculator_Input_Two = "-" + calculator_Input_Two;
+                }
+            }
+            label1_Update();
+        }
+
+
+        // MATH 
+
+        private void equals() // Checks what action to do
         {
             switch (action)
             {
-                case "+":
+                case "+": // addition
                     adding();
                     break;
 
-                case "-":
+                case "-": // subtraction
                     taking();
                     break;
 
-                case "*":
+                case "*": // multiplication
                     multiply();
                     break;
 
-                case "/":
+                case "/": // division
                     division();
                     break;
 
-                default:
+                default: // do nothing
                     label1_Update();
                     break;
             }
         }
 
-        private void adding()
+
+        private void adding() // addition math
         {
             double result = Double.Parse(calculator_Input_One) + Double.Parse(calculator_Input_Two);
             label1_result(result);
         }
 
-        private void taking()
+        private void taking() //subtraction math
         {
             double result = Double.Parse(calculator_Input_One) - Double.Parse(calculator_Input_Two);
             label1_result(result);
         }
 
-        private void multiply()
+        private void multiply() //multiplication math
         {
             double result = Double.Parse(calculator_Input_One) * Double.Parse(calculator_Input_Two);
             label1_result(result);
         }
 
-        private void division()
+        private void division() //division math
         {
             double result = Double.Parse(calculator_Input_One) / Double.Parse(calculator_Input_Two);
             label1_result(result);
         }
 
-        private void squareroot()
+        private void squareroot() //square root math
         {
             double result = Math.Sqrt(Double.Parse(calculator_Input_One));
             label1_result(result);
         }
 
-        private void root ()
+        private void root () // root math
         {
             double result = Double.Parse(calculator_Input_One) * Double.Parse(calculator_Input_One);
             label1_result(result);
         }
 
+        //Label Update
         private void label1_Update()
         {
             if (isAtFirstInput == true)
@@ -224,50 +266,7 @@ namespace Calculators
             label1.Text = result.ToString();
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            delet();
-        }
-
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonChangeSign_Click(object sender, EventArgs e)
-        {
-            if (isAtFirstInput == true)
-            {
-                if (calculator_Input_One.StartsWith("-"))
-                {
-                    calculator_Input_One = calculator_Input_One.Remove(0,1);
-                }
-                else
-                {
-                    calculator_Input_One = "-" + calculator_Input_One;
-                }
-            }
-            else
-            {
-                if (calculator_Input_Two.StartsWith("-"))
-                {
-                    calculator_Input_Two = calculator_Input_Two.Remove(0,1);
-                }
-                else
-                {
-                    calculator_Input_Two = "-" + calculator_Input_Two;
-                }
-            }
-            label1_Update();
-        }
-
-        private void delet()
+        private void delet() // deletion
         {
             if (isAtFirstInput == true && (calculator_Input_One.Length - 1) >= 0)
             {
@@ -280,7 +279,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void plus()
+        private void plus() // addition
         {
             if (calculator_Input_One != "" && action == "")
             {
@@ -294,7 +293,7 @@ namespace Calculators
             }
         }
 
-        private void minus()
+        private void minus() //subtraction
         {
             if (calculator_Input_One != "" && action == "")
             {
@@ -308,7 +307,7 @@ namespace Calculators
             }
         }
 
-        private void multy()
+        private void multy() //multiplication
         {
             if (calculator_Input_One != "" && action == "")
             {
@@ -322,7 +321,7 @@ namespace Calculators
             }
         }
 
-        private void divi()
+        private void divi() //division
         {
             if (calculator_Input_One != "" && action == "")
             {
@@ -336,8 +335,8 @@ namespace Calculators
             }
         }
 
-
-        private void addOne()
+        //Number Controls
+        private void addOne() // adding one
         {
             if (isAtFirstInput == true)
             {
@@ -350,7 +349,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addTwo()
+        private void addTwo() // adding two
         {
             if (isAtFirstInput == true)
             {
@@ -363,7 +362,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addThree()
+        private void addThree() // adding three
         {
             if (isAtFirstInput == true)
             {
@@ -376,7 +375,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addFour()
+        private void addFour() // adding four
         {
             if (isAtFirstInput == true)
             {
@@ -389,7 +388,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addFive()
+        private void addFive() // adding five
         {
             if (isAtFirstInput == true)
             {
@@ -402,7 +401,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addSix()
+        private void addSix() // adding six
         {
             if (isAtFirstInput == true)
             {
@@ -415,7 +414,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addSeven()
+        private void addSeven() // adding seven
         {
             if (isAtFirstInput == true)
             {
@@ -428,7 +427,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addEight()
+        private void addEight() // adding eight
         {
             if (isAtFirstInput == true)
             {
@@ -441,7 +440,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addNine()
+        private void addNine() // adding nine
         {
             if (isAtFirstInput == true)
             {
@@ -454,7 +453,7 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addZero()
+        private void addZero() // adding zero
         {
             if (isAtFirstInput == true)
             {
@@ -467,24 +466,40 @@ namespace Calculators
             label1_Update();
         }
 
-        private void addDecimal()
+        private void addDecimal() // adding decimal
         {
-            if (isAtFirstInput == true)
+            if (isAtFirstInput == true && !(calculator_Input_One.Contains('.')))
             {
-                calculator_Input_One = calculator_Input_One + ".";
+                if(calculator_Input_One.Length == 0)
+                {
+                    calculator_Input_One = calculator_Input_One + "0.";
+                }
+                else
+                {
+                    calculator_Input_One = calculator_Input_One + ".";
+                }
+                
             }
-            else
+            else if(isAtFirstInput == false && !(calculator_Input_Two.Contains('.')))
             {
-                calculator_Input_Two = calculator_Input_Two + ".";
+                if(calculator_Input_Two.Length == 0)
+                {
+                    calculator_Input_Two = calculator_Input_Two + "0.";
+                }
+                else
+                {
+                    calculator_Input_Two = calculator_Input_Two + ".";
+                }
             }
             label1_Update();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e) // don't delete breaks everything
         {
 
         }
 
+        //KEYBOARD CONTROLS
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
