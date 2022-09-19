@@ -261,13 +261,14 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(59, 61);
+            this.label1.Font = new System.Drawing.Font("Engravers MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.errorProvider1.SetIconAlignment(this.label1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.label1.Location = new System.Drawing.Point(59, 41);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(15, 17);
+            this.label1.Size = new System.Drawing.Size(250, 38);
             this.label1.TabIndex = 34;
             this.label1.Text = "0";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -338,15 +339,16 @@
             this.Controls.Add(this.buttonFour);
             this.Controls.Add(this.buttonEight);
             this.Controls.Add(this.pictureBox1);
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(409, 382);
             this.MinimumSize = new System.Drawing.Size(409, 382);
             this.Name = "Form1";
             this.Text = "Super Cool Calculator";
             this.Load += new System.EventHandler(this.Form1_Load_1);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
